@@ -1,0 +1,68 @@
+camera:
+  K:
+    - [252.48483428,   0.0,         314.2399718 ]
+    - [  0.0,        254.07987077, 231.91962777]
+    - [  0.0,           0.0,           1.0       ]
+  d: 0.20
+  distortions_coeffs: [-0.05275756, 0.07169613, 0.00231284, -0.00724033, -0.03682232]
+
+scanner:
+  camera_candidates: [0, 1, 2]
+  image_width: 1920
+  image_height: 1080
+  fourcc_codec: "MJPG"
+  fps_target: 30
+  enable_servo: false
+  servo_port: "/dev/ttyUSB0"
+  servo_baud_rate: 115200
+  enable_logging: true
+  raw_save_dir: "master_ws/src/bot_scanning/bot_scanning/logs/captures"
+  metadata_csv_path: "master_ws/src/bot_scanning/bot_scanning/logs/captures/metadata.csv"
+  log_file_path: "master_ws/src/bot_scanning/bot_scanning/logs/scanner.log"
+
+processor:
+  log_file: "master_ws/src/bot_scanning/bot_scanning/logs/processor.log"
+  inventory_file: "master_ws/src/bot_scanning/bot_scanning/output/inventory.csv"
+  raw_save_dir: "master_ws/src/bot_scanning/bot_scanning/logs/captures"
+  annotated_save_dir: "master_ws/src/bot_scanning/bot_scanning/logs/annotated"
+  save_annotated: true
+  raw_meta_csv: "master_ws/src/bot_scanning/bot_scanning/logs/captures_meta.csv"
+
+duplicacy_thresholds:
+  x: 4.0
+  y: 3.0
+
+qr_detector:
+  model_size: "m"
+  conf_th: 0.5
+  nms_iou: 0.3
+  padding_value: 0.2
+  wechat_dir: "master_ws/src/bot_scanning/bot_scanning/config/wechat_qrcode_models"
+
+pipeline:
+  num_scans: 20
+  burst_size: 10
+  capture_dir: "master_ws/src/bot_scanning/bot_scanning/captures"
+  metadata_csv_path: "master_ws/src/bot_scanning/bot_scanning/captures/metadata.csv"
+  error_log_path: "master_ws/src/bot_scanning/bot_scanning/logs/capture_errors.log"
+  processor_log_path: "master_ws/src/bot_scanning/bot_scanning/logs/processor.log"
+  inventory_csv_path: "master_ws/src/bot_scanning/bot_scanning/output/inventory.csv"
+vision_node:
+  log_file: "master_ws/src/bot_scanning/bot_scanning/logs/vision_node.log"
+  console_log_level: "INFO"
+  file_log_level: "DEBUG"
+  delete_raw_flag: false
+
+
+servo:
+  timeout: 2         
+  h_theta: 30        
+  v_theta: 25        
+  h_neutral: 84        
+  v_neutral: 80        
+  wait_after_move: 0.25
+
+servo_ids:
+  horizontal: 0
+  vertical: 1
+
